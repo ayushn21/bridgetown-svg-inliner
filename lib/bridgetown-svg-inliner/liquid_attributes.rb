@@ -10,7 +10,7 @@ module BridgetownSvgInliner
       @path = unescape_string(path)
       @args = args.scan(Liquid::TagAttributes).map do |arg|
         [arg[0], unescape_string(arg[1])]
-      end.to_h
+      end.to_h if args.present?
     end
 
     private

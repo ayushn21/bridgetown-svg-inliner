@@ -2,4 +2,22 @@
 layout: default
 ---
 
-Testing this plugin: {% sample_plugin %}
+<figure id="base">
+  {% svg "/assets/icons/thumbs_up.svg" %}
+</figure>
+
+<figure id="with-attributes">
+  {% svg "/assets/icons/thumbs_up.svg", class: "icon", id: "upvote" %}
+</figure>
+
+<figure id="without-quotes">
+  {% svg /assets/icons/thumbs_up.svg, class: icon %}
+</figure>
+
+<figure id="with-liquid-variables">
+  {% assign svg_file = "thumbs_up" %}
+  {% assign svg_class_list = "icon icon--small" %}
+
+  {% svg "/assets/icons/{{ svg_file }}.svg", class: "{{ svg_class_list }}" %}
+</figure>
+

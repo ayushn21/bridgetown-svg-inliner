@@ -20,7 +20,7 @@ module BridgetownSvgInliner
     def render(path, html_attributes)
       file = File.read(site.in_source_dir(path))
       xml = Nokogiri::XML(file)
-      html_attributes.each { |key, value| xml.root.set_attribute(key, value) }
+      html_attributes&.each { |key, value| xml.root.set_attribute(key, value) }
       xml.root.to_xml.html_safe
     end
   end

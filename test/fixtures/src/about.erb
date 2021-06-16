@@ -1,0 +1,12 @@
+---
+layout: default
+template_engine: erb
+---
+
+<figure id="base">
+  <%= svg "/assets/icons/thumbs_up.svg" %>
+</figure>
+
+<figure id="with-attributes">
+  <%= svg "/assets/icons/thumbs_up.svg", class: "icon", id: "upvote" %>
+</figure>
