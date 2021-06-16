@@ -1,34 +1,60 @@
-# Sample plugin for Bridgetown
+# Bridgetown SVG Inliner
 
-_NOTE: This isn't a real plugin! Copy this sample code and use it to create your own Ruby gem! [Help guide here…](https://www.bridgetownrb.com/docs/plugins)_ 😃
-
-_Starting with Bridgetown v0.15, you can run_ `bridgetown plugins new` _to easily set up a customized verison of this starter repo._
-
-A Bridgetown plugin to [fill in the blank]…
+A Bridgetown plugin that provides a liquid tag and ERB helper to inline SVG files within the HTML markup.
 
 ## Installation
 
 Run this command to add this plugin to your site's Gemfile:
 
 ```shell
-$ bundle add my-awesome-plugin -g bridgetown_plugins
-```
-
-Or if there's a `bridgetown.automation.rb` automation script, you can run that instead for guided setup:
-
-```ruby
-$ bundle exec bridgetown apply https://github.com/username/my-awesome-plugin
+$ bundle add "bridgetown-svg-inliner" -g bridgetown_plugins
 ```
 
 ## Usage
 
-The plugin will…
+This plugin provides an `svg` tag in Liquid and an `svg` helper in ERB or other Tilt based templating langugages.
 
-### Optional configuration options
+```liquid
+<!-- Liquid -->
+{% svg "/assets/icons/thumbs-up.svg" %}
+```
 
-The plugin will automatically use any of the following metadata variables if they are present in your site's `_data/site_metadata.yml` file.
+```erb
+<!-- ERB -->
+<%= svg "/assets/icons/thumbs-up.svg" %>
+```
 
-…
+### Attributes
+
+You can pass in attributes that you'd like to include on the `svg` tag in the HTML output.
+
+```liquid
+<!-- Liquid -->
+{% svg "/assets/icons/thumbs-up.svg", class: "icon" %}
+```
+
+```erb
+<!-- ERB -->
+<%= svg "/assets/icons/thumbs-up.svg", class: "icon" %>
+```
+
+```html
+<!-- Output -->
+<svg class="icon">
+  ...
+</svg>
+```
+
+### Liquid variables
+
+You can use Liquid variables by enclosing them in double braces (`{{ }}`)
+
+```liquid
+<!-- Liquid -->
+{% assign svg_file = "thumbs-up" %}
+{% svg_class_list = "icon icon--small" %}
+{% svg "/assets/icons/{{ svg_file }}.svg", class: "{{ svg_class_list }}" %}
+```
 
 ## Testing
 
@@ -37,25 +63,15 @@ The plugin will automatically use any of the following metadata variables if the
 
 ## Contributing
 
-1. Fork it (https://github.com/username/my-awesome-plugin/fork)
+1. Fork it (https://github.com/ayushn21/bridgetown-svg-inliner/fork)
 2. Clone the fork using `git clone` to your local development machine.
 3. Create your feature branch (`git checkout -b my-new-feature`)
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create a new Pull Request
 
-----
+## License
 
-## Releasing (you can delete this section in your own plugin repo)
+Bridgetown SVG Inliner is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-To release a new version of the plugin, simply bump up the version number in both `version.rb` and
-`package.json`, and then run `script/release`. This will require you to have a registered account
-with both the [RubyGems.org](https://rubygems.org) and [NPM](https://www.npmjs.com) registries.
-You can optionally remove the `package.json` and `frontend` folder if you don't need to package frontend
-assets for Webpack.
-
-If you run into any problems or need further guidance, please check out our [Bridgetown community resources](https://www.bridgetownrb.com/docs/community)
-where friendly folks are standing by to help you build and release your plugin or theme.
-
-**NOTE:** make sure you add the `bridgetown-plugin` [topic](https://github.com/topics/bridgetown-plugin) to your
-plugin's GitHub repo so the plugin or theme will show up on [Bridgetown's official Plugin Directory](https://www.bridgetownrb.com/plugins)! (There may be a day or so delay before you see it appear.)
+Copyright © 2021 [Ayush Newatia](https://twitter.com/ayushn21)
