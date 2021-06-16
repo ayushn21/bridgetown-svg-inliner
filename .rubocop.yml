@@ -20,3 +20,12 @@ AllCops:
 
     - script/**/*
     - vendor/**/*
+
+Style/MultilineIfModifier:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
