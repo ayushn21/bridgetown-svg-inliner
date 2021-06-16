@@ -52,7 +52,7 @@ You can use Liquid variables by enclosing them in double braces (`{{ }}`)
 ```liquid
 <!-- Liquid -->
 {% assign svg_file = "thumbs-up" %}
-{% svg_class_list = "icon icon--small" %}
+{% assign svg_class_list = "icon icon--small" %}
 {% svg "/assets/icons/{{ svg_file }}.svg", class: "{{ svg_class_list }}" %}
 ```
 
