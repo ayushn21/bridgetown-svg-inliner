@@ -4,7 +4,7 @@ inherit_gem:
   rubocop-bridgetown: .rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   Include:
     - lib/**/*.rb
     - test/**/*.rb
@@ -15,7 +15,7 @@ AllCops:
 
     - Gemfile.lock
     - CHANGELOG.md
-    - LICENSE.txt
+    - LICENSE.md
     - README.md
 
     - script/**/*
