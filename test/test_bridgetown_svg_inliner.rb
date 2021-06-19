@@ -38,6 +38,10 @@ class TestBridgetownSvgInliner < Minitest::Test
     should "output the SVG interpolating liquid variables in the arguments" do
       assert_valid_svg "#with-liquid-variables > svg.icon.icon--small"
     end
+
+    should "output the SVG when rendered within a liquid component" do
+      assert_valid_svg "#within-component > svg"
+    end
   end
 
   context "rendering an SVG using the ERB helper" do
@@ -55,6 +59,10 @@ class TestBridgetownSvgInliner < Minitest::Test
     should "output the SVG with attributes passed into the helper" do
       assert_valid_svg "#with-attributes > svg.icon"
       assert_valid_svg "#upvote"
+    end
+
+    should "output the SVG when rendered within a Ruby component" do
+      assert_valid_svg "#within-component > svg"
     end
   end
 

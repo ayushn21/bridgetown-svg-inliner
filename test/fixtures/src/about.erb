@@ -10,3 +10,7 @@ template_engine: erb
 <figure id="with-attributes">
   <%= svg "/assets/icons/thumbs_up.svg", class: "icon", id: "upvote" %>
 </figure>
+
+<figure id="within-component">
+  <%= render SvgRubyComponent.new("thumbs_up") %>
+</figure>
