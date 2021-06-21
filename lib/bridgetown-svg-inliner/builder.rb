@@ -10,7 +10,7 @@ module BridgetownSvgInliner
         render attributes.path, attributes.args
       end
 
-      helper "svg" do |path, **attributes|
+      helper "svg" do |path, attributes|
         render path, attributes
       end
     end
