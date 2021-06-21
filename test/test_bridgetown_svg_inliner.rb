@@ -72,6 +72,6 @@ class TestBridgetownSvgInliner < Minitest::Test
     svg_node = @contents.at_css(selector)
 
     assert_equal "svg", svg_node.name
-    refute_nil svg_node.children.find { _1.name == "path" }
+    refute_nil svg_node.children.find { |node| node.name == "path" }
   end
 end
