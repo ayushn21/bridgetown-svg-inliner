@@ -1,5 +1,8 @@
 # Bridgetown SVG Inliner
 
+[![Tests](https://github.com/ayushn21/bridgetown-svg-inliner/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/ayushn21/bridgetown-svg-inliner/actions/workflows/tests.yml)
+[![Gem Version](https://badge.fury.io/rb/bridgetown-svg-inliner.svg)](https://badge.fury.io/rb/bridgetown-svg-inliner)
+
 A Bridgetown plugin that provides a liquid tag and ERB helper to inline SVG files within the HTML markup.
 
 ## Installation
