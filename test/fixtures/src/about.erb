@@ -14,3 +14,7 @@ template_engine: erb
 <figure id="within-component">
   <%= render SvgRubyComponent.new("thumbs_up") %>
 </figure>
+
+<figure id="with-data-attributes">
+  <%= svg "/assets/icons/thumbs_up.svg", "data-color": "green" %>
+</figure>

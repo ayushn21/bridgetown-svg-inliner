@@ -14,6 +14,10 @@ layout: default
   {% svg /assets/icons/thumbs_up.svg, class: icon %}
 </figure>
 
+<figure id="with-data-attributes">
+  {% svg "/assets/icons/thumbs_up.svg", data-color: "green" %}
+</figure>
+
 <figure id="with-liquid-variables">
   {% assign svg_file = "thumbs_up" %}
   {% assign svg_class_list = "icon icon--small" %}

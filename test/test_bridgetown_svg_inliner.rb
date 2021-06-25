@@ -35,6 +35,10 @@ class TestBridgetownSvgInliner < Minitest::Test
       assert_valid_svg "#without-quotes > svg.icon"
     end
 
+    should "output the SVG with data attributes" do
+      assert_valid_svg "#with-data-attributes > [data-color]"
+    end
+
     should "output the SVG interpolating liquid variables in the arguments" do
       assert_valid_svg "#with-liquid-variables > svg.icon.icon--small"
     end
@@ -63,6 +67,10 @@ class TestBridgetownSvgInliner < Minitest::Test
 
     should "output the SVG when rendered within a Ruby component" do
       assert_valid_svg "#within-component > svg"
+    end
+
+    should "output the SVG with data attributes" do
+      assert_valid_svg "#with-data-attributes > [data-color]"
     end
   end
 

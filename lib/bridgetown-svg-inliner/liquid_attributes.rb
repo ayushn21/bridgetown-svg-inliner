@@ -8,7 +8,7 @@ module BridgetownSvgInliner
       path, args = attributes.split(",", 2)
 
       @path = unescape_string(path)
-      @args = args.scan(Liquid::TagAttributes).map do |arg|
+      @args = args.scan(%r{([a-zA-Z0-9_\-]+)\s*:\s*(#{Liquid::QuotedFragment})}o).map do |arg|
         [arg[0], unescape_string(arg[1])]
       end.to_h if args.present?
     end
