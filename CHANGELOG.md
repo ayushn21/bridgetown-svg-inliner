@@ -1,5 +1,10 @@
 # main
 
+# 1.1.0 / 23-01-2023
+
+* Require Bridgetown 1.0 or newer.
+* Require Ruby 2.7 or newer.
+
 # 1.0.2 / 25-06-2021
 
 * Fix the parsing of attributes with a dash so data attributes or similar can be set on the svg.
