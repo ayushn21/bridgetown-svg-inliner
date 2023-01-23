@@ -52,7 +52,7 @@ class TestBridgetownSvgInliner < Minitest::Test
     setup do
       with_metadata title: "SVG Inliner" do
         @site.process
-        @contents = Nokogiri::HTML(File.read(dest_dir("about.html")))
+        @contents = Nokogiri::HTML(File.read(dest_dir("about/index.html")))
       end
     end
 
