@@ -10,7 +10,17 @@ A Bridgetown plugin that provides a liquid tag and ERB helper to inline SVG file
 Run this command to add this plugin to your site's Gemfile:
 
 ```shell
-$ bundle add "bridgetown-svg-inliner" -g bridgetown_plugins
+$ bundle add "bridgetown-svg-inliner"
+```
+
+Initialize it in your `config/initializers.rb` file.
+
+```ruby
+Bridgetown.configure do |config|
+  # ...
+
+  init :"bridgetown-svg-inliner"
+end
 ```
 
 ## Usage
@@ -77,4 +87,4 @@ You can use Liquid variables by enclosing them in double braces (`{{ }}`)
 
 Bridgetown SVG Inliner is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-Copyright © 2021 [Ayush Newatia](https://twitter.com/ayushn21)
+Copyright © 2023 [Ayush Newatia](https://twitter.com/ayushn21)
