@@ -2,7 +2,7 @@
 
 require_relative "./helper"
 
-class TestBridgetownSvgInliner < Minitest::Test
+class TestSvgInliner < BridgetownSvgInliner::Test
   def setup
     @config = Bridgetown.configuration(
         "root_dir"    => root_dir,
@@ -12,64 +12,59 @@ class TestBridgetownSvgInliner < Minitest::Test
       )
     @config.run_initializers! context: :static
     @site = Bridgetown::Site.new(@config)
+    @site.process
   end
 
-  context "rendering an SVG using the liquid tag" do
-    setup do
-      with_metadata title: "SVG Inliner" do
-        @site.process
-        @contents = Nokogiri::HTML(File.read(dest_dir("index.html")))
-      end
+  describe "rendering an SVG using the liquid tag" do
+    before do
+      @contents = Nokogiri::HTML(File.read(dest_dir("index.html")))
     end
 
-    should "output the SVG file" do
+    it "output the SVG file" do
       assert_valid_svg "#base > svg"
     end
 
-    should "output the SVG with attributes passed into the tag" do
+    it "output the SVG with attributes passed into the tag" do
       assert_valid_svg "#with-attributes > svg.icon"
       assert_valid_svg "#upvote"
     end
 
-    should "output the SVG when quotes are not used in the arguments" do
+    it "output the SVG when quotes are not used in the arguments" do
       assert_valid_svg "#without-quotes > svg.icon"
     end
 
-    should "output the SVG with data attributes" do
+    it "output the SVG with data attributes" do
       assert_valid_svg "#with-data-attributes > [data-color]"
     end
 
-    should "output the SVG interpolating liquid variables in the arguments" do
+    it "output the SVG interpolating liquid variables in the arguments" do
       assert_valid_svg "#with-liquid-variables > svg.icon.icon--small"
     end
 
-    should "output the SVG when rendered within a liquid component" do
+    it "output the SVG when rendered within a liquid component" do
       assert_valid_svg "#within-component > svg"
     end
   end
 
-  context "rendering an SVG using the ERB helper" do
-    setup do
-      with_metadata title: "SVG Inliner" do
-        @site.process
-        @contents = Nokogiri::HTML(File.read(dest_dir("about/index.html")))
-      end
+  describe "rendering an SVG using the ERB helper" do
+    before do
+      @contents = Nokogiri::HTML(File.read(dest_dir("about/index.html")))
     end
 
-    should "output the SVG file" do
+    it "output the SVG file" do
       assert_valid_svg "#base > svg"
     end
 
-    should "output the SVG with attributes passed into the helper" do
+    it "output the SVG with attributes passed into the helper" do
       assert_valid_svg "#with-attributes > svg.icon"
       assert_valid_svg "#upvote"
     end
 
-    should "output the SVG when rendered within a Ruby component" do
+    it "output the SVG when rendered within a Ruby component" do
       assert_valid_svg "#within-component > svg"
     end
 
-    should "output the SVG with data attributes" do
+    it "output the SVG with data attributes" do
       assert_valid_svg "#with-data-attributes > [data-color]"
     end
   end

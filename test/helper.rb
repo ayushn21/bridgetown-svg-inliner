@@ -2,7 +2,6 @@
 
 require "minitest/autorun"
 require "minitest/reporters"
-require "shoulda"
 require "bridgetown"
 
 Bridgetown.begin!
@@ -17,7 +16,9 @@ Minitest::Reporters.use! [
   ),
 ]
 
-Minitest::Test.class_eval do # rubocop:disable Metrics/BlockLength
+class BridgetownSvgInliner::Test < Minitest::Test
+  extend Minitest::Spec::DSL
+
   ROOT_DIR = File.expand_path("fixtures", __dir__)
   SOURCE_DIR = File.join(ROOT_DIR, "src")
   DEST_DIR   = File.expand_path("dest", __dir__)
@@ -32,25 +33,6 @@ Minitest::Test.class_eval do # rubocop:disable Metrics/BlockLength
 
   def dest_dir(*files)
     File.join(DEST_DIR, *files)
-  end
-
-  def with_metadata(data = {})
-    FileUtils.mv(
-      source_dir("_data/site_metadata.yml"),
-      source_dir("_data/_site_metadata.yml")
-    )
-    File.write(
-      source_dir("_data/site_metadata.yml"),
-      data.transform_keys(&:to_s).to_yaml.sub("---\n", "")
-    )
-
-    yield
-
-    FileUtils.rm(source_dir("_data/site_metadata.yml"))
-    FileUtils.mv(
-      source_dir("_data/_site_metadata.yml"),
-      source_dir("_data/site_metadata.yml")
-    )
   end
 
   def make_liquid_context(registers = {})
