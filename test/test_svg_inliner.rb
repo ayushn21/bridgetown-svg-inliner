@@ -6,11 +6,11 @@ class TestSvgInliner < BridgetownSvgInliner::Test
   def setup
     Bridgetown.reset_configuration!
     @config = Bridgetown.configuration(
-        "root_dir"    => root_dir,
-        "source"      => source_dir,
-        "destination" => dest_dir,
-        "quiet"       => true
-      )
+      "root_dir"    => root_dir,
+      "source"      => source_dir,
+      "destination" => dest_dir,
+      "quiet"       => true
+    )
     @config.run_initializers! context: :static
     @site = Bridgetown::Site.new(@config)
     @site.process
