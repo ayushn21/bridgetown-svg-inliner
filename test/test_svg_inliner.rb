@@ -4,6 +4,7 @@ require_relative "./helper"
 
 class TestSvgInliner < BridgetownSvgInliner::Test
   def setup
+    Bridgetown.reset_configuration!
     @config = Bridgetown.configuration(
         "root_dir"    => root_dir,
         "source"      => source_dir,
