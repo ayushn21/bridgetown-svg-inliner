@@ -37,6 +37,11 @@ This plugin provides an `svg` tag in Liquid and an `svg` helper in ERB or other 
 <%= svg "/assets/icons/thumbs-up.svg" %>
 ```
 
+```serb
+<!-- Serbea -->
+{%= svg "/assets/icons/thumbs-up.svg" %}
+```
+
 ### Attributes
 
 You can pass in attributes that you'd like to include on the `svg` tag in the HTML output.
@@ -51,14 +56,19 @@ You can pass in attributes that you'd like to include on the `svg` tag in the HT
 <%= svg "/assets/icons/thumbs-up.svg", class: "icon" %>
 ```
 
-```html
-<!-- Output -->
-<svg class="icon">
-  ...
-</svg>
+```serb
+<!-- Serbea -->
+{%= svg "/assets/icons/thumbs-up.svg", class: "icon" %}
 ```
 
-### Liquid variables
+```html
+<!-- Output -->
+<svg class="icon">...</svg>
+```
+
+### Variables
+
+#### Liquid variables
 
 You can use Liquid variables by enclosing them in double braces (`{{ }}`)
 
@@ -69,10 +79,30 @@ You can use Liquid variables by enclosing them in double braces (`{{ }}`)
 {% svg "/assets/icons/{{ svg_file }}.svg", class: "{{ svg_class_list }}" %}
 ```
 
+#### ERB variables
+
+You can use ERB variables.
+
+```erb
+<% svg_file = "thumbs-up.svg" %>
+<% svg_class_list = "icon icon--small" %>
+<%= svg "/assets/icons/" + svg_file, class: "svg_class_list" %>
+```
+
+#### Serbea variables
+
+You can use Serbea variables.
+
+```serb
+{% svg_file = "thumbs-up.svg" %}
+{% svg_class_list = "icon icon--small" %}
+{%= svg "/assets/icons/" + svg_file, class: "svg_class_list" %}
+```
+
 ## Testing
 
-* Run `bundle exec rake test` to run the test suite
-* Or run `script/cibuild` to validate with Rubocop and Minitest together.
+- Run `bundle exec rake test` to run the test suite
+- Or run `script/cibuild` to validate with Rubocop and Minitest together.
 
 ## Contributing
 
