@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "bridgetown", ">= 1.2.0", "< 3.0"
   spec.add_dependency "nokogiri"
+  spec.add_dependency "csv"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
