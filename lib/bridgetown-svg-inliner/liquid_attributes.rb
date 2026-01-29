@@ -10,7 +10,7 @@ module BridgetownSvgInliner
       @path = unescape_string(path)
       @args = args.scan(%r{([a-zA-Z0-9_-]+)\s*:\s*(#{Liquid::QuotedFragment})}o).map do |arg|
         [arg[0], unescape_string(arg[1])]
-      end.to_h if args.present?
+      end.to_h if args&.length&.positive?
     end
 
     private
